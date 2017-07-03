@@ -1,0 +1,7 @@
+---
+# vars file for roles/ansible-role-nginx-install
+os_repositories:
+- ppa:nginx/stable
+
+os_packages:
+- nginx

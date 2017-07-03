@@ -1,0 +1,19 @@
+---
+# tasks file for roles/ansible-role-nginx-install
+- name: Update variables
+  include_vars: "{{ ansible_distribution }}.yml"
+
+- name: Add apt-get repository
+  apt_repository:
+    repo: '{{ item }}'
+  with_items: "{{ os_repositories }}"
+
+- name: Update system packages
+  apt:
+    name: "{{ item }}"
+    install_recommends: no
+    state: present
+    update_cache: yes
+  with_items:
+  - "{{ os_packages }}"
+  when: ansible_os_family == "Debian"

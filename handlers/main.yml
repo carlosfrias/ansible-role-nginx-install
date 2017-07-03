@@ -1,0 +1,6 @@
+---
+# handlers file for roles/ansible-role-nginx-install
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted
