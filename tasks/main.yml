@@ -17,18 +17,5 @@
   with_items:
   - "{{ os_packages }}"
   when: ansible_os_family == "Debian"
-
-- block:
-  - name: Start Nginx
-    service:
-      name: nginx
-      state: restarted
-      enabled: yes
-  rescue:
-    - name: Start Nginx
-      service:
-        name: nginx
-        state: restarted
-        enabled: yes
-
-
+  notify:
+  - "Start Nginx"
