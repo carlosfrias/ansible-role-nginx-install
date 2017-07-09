@@ -17,5 +17,11 @@
   with_items:
   - "{{ os_packages }}"
   when: ansible_os_family == "Debian"
-  notify:
-  - "Start Nginx"
+
+- name: Start Nginx
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes
+
+
